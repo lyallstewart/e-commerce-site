@@ -11,9 +11,12 @@ const setupDatabase = () => {
     );
     const Schema = mongoose.Schema;
     const userSchema = new Schema({
-        id: {type: Number, required: true},
         username: {type: String, required: true},
-        password: {type: String, required: true},
+        password: {
+            hash: {type: String, required: true},
+            salt: {type: String, required: true},
+            iterations: {type: Number, required: true}
+        },
         email: {type: String, required: true},
         firstName: {type: String, required: true},
         lastName: {type: String, required: true},
@@ -24,10 +27,8 @@ const setupDatabase = () => {
             default: () => new Date(),
             immutable: true
         },
-        updatedAt: {type: Date, required: true}
     });
     const productSchema = new Schema({
-        productCode: {type: String, required: true},
         name: {type: String, required: true},
         description: {type: String, required: true},
         price: {type: Number, required: true},
@@ -39,10 +40,8 @@ const setupDatabase = () => {
             default: () => new Date(),
             immutable: true
         },
-        updatedAt: {type: Date, required: true}
     });
     const orderSchema = new Schema({
-        id: {type: Number, required: true},
         user: {
             type: Schema.Types.ObjectId,
             ref: 'User',
@@ -62,9 +61,9 @@ const setupDatabase = () => {
     });
 
     const AutoIncrement = AutoIncrementFactory(mongoose.connection);
-    productSchema.plugin(AutoIncrement, {inc_field: 'productCode'});
-    userSchema.plugin(AutoIncrement, {inc_field: 'id'});
-    orderSchema.plugin(AutoIncrement, {inc_field: 'id'});
+    productSchema.plugin(AutoIncrement, {inc_field: 'productId'});
+    userSchema.plugin(AutoIncrement, {inc_field: 'userId'});
+    orderSchema.plugin(AutoIncrement, {inc_field: 'orderId'});
 
     const User = mongoose.model('User', userSchema);
     const Product = mongoose.model('Product', productSchema);
