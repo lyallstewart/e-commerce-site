@@ -33,7 +33,7 @@ const setupDatabase = () => {
         description: {type: String, required: true},
         price: {type: Number, required: true},
         quantity: {type: Number, required: true},
-        image: {type: String, required: false},
+        category: {type: String, required: true},
         createdAt: {
             type: Date,
             required: true,
@@ -42,22 +42,18 @@ const setupDatabase = () => {
         },
     });
     const orderSchema = new Schema({
-        user: {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
+        user: {type: String, required: true},
+        items: {
+            type: Array,
             required: true
         },
-        product: {
-            type: Schema.Types.ObjectId,
-            ref: 'Product',
-            required: true
-        },
-        quantity: {type: Number, required: true},
         orderTime: {
             type: Date,
             required: true,
-            immutable: true
+            immutable: true,
+            default: () => new Date()
         },
+        price: {type: Number, required: true},
     });
 
     const AutoIncrement = AutoIncrementFactory(mongoose.connection);
