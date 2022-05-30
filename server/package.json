@@ -3,13 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./src/bin/www.js"
+    "start": "node ./src/app.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^16.0.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
-    "mongodb": "^4.6.0"
+    "mongoose": "^6.3.4",
+    "mongoose-sequence": "^5.3.1"
   }
 }
