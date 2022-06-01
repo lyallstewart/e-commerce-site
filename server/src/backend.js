@@ -12,6 +12,13 @@ const path = require('path')
 const setupDatabase = require('./database/db');
 const crypto = require('crypto');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
+
+const privateKey = fs.readFileSync('C:/Users/lyall/Coding/ecommerce/server/src/key.pem');
+const certificate = fs.readFileSync('C:/Users/lyall/Coding/ecommerce/server/src/cert.pem');
+const sslCredentials = {key: privateKey, cert: certificate};
 
 /***
  * Setup Express
@@ -383,4 +390,5 @@ app.use((req, res, next) => {
 })
 
 // Start express server
-app.listen(process.env.port, () => console.log(`App listening on port ${process.env.port}!`))
+const httpsServer = https.createServer(sslCredentials, app);
+httpsServer.listen(8443);
