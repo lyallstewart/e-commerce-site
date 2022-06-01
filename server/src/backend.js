@@ -329,6 +329,7 @@ app.post('/orders', async (req, res) => {
         user: req.body.user,
         items: req.body.items,
         price: req.body.price,
+        imageCode: req.body.imageCode
     });
     try {
         await newOrder.save();
@@ -341,20 +342,16 @@ app.post('/orders', async (req, res) => {
 
 // Handle PUT requests to /orders/:orderId
 app.put('/orders/:orderId', async (req, res) => {
-    const user = await database.User.findOne({username:req.body.user});
-    const items = [];
-    for (let productCode of req.body.items) {
-        items.push(await database.Product.findOne({productId: productCode}));
-    }
     const order = await database.Order.findOne({orderId: req.params.orderId});
     if(!order) {
         res.status(404).json({error: 'Order does not exist'});
     } else {
         try {
             await database.Order.findOneAndUpdate({orderId: req.params.orderId}, {new: true}, {
-                user,
-                items,
+                user: req.body.user,
+                items: req.body.items,
                 price: req.body.price,
+                imageCode: req.body.imageCode
             });
             res.status(200).json(order);
         } catch (err) {

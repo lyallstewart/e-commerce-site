@@ -40,6 +40,7 @@ const setupDatabase = () => {
             default: () => new Date(),
             immutable: true
         },
+        imageCode: {type: String, required: true},
     });
     const orderSchema = new Schema({
         user: {type: String, required: true},
