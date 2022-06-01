@@ -1,7 +1,7 @@
 header {
     height: 50px;
     background-color: black;
-    box-shadow: 1px 1px 1px grey;
+    box-shadow: 1px 1px 1px black;
     display: flex;
     flex-direction: row;
     padding: 10px 10em;
@@ -39,8 +39,7 @@ header {
     flex-grow: 2;
     display: flex;
     justify-items: center;
-    border: 2px solid white;
-    border-radius: 5px;
+    border-bottom: 2px solid white;
     padding: 5px;
 }
 

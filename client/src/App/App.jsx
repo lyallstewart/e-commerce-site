@@ -16,7 +16,7 @@ const App = () => {
         <div id="app-global-wrapper">
             <Header />
             <main>
-                <p>Content</p>
+                <Outlet />
             </main>
             <footer>
                 <p>&copy; 2022 Lyall Stewart</p>
