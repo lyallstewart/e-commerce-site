@@ -1,0 +1,65 @@
+header {
+    height: 50px;
+    background-color: black;
+    box-shadow: 1px 1px 1px grey;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10em;
+    align-items: center;
+    gap: 50px;
+}
+
+#header-logo-text {
+    color: white;
+    font-size: 1.5em;
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.header-product-link {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    padding: 0;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200;
+}
+
+#header-search {
+    background-color: black;
+    border: none;
+    outline: none;
+    color: white;
+}
+
+#header-search-container {
+    flex-grow: 2;
+    display: flex;
+    justify-items: center;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#header-cart-container {
+    display: flex;
+    justify-items: center;
+    align-items: center
+}
+
+#header-cart-text {
+    color: white;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 5px;
+}
+
+#header-account-text {
+    color: white;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 5px;
+}
