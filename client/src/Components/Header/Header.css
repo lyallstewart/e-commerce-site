@@ -56,9 +56,17 @@ header {
     margin-left: 5px;
 }
 
-#header-account-text {
+#header-account-button-container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-account-text {
     color: white;
     font-size: 1em;
     font-family: 'Roboto', sans-serif;
     margin-left: 5px;
+    text-decoration: none;
 }

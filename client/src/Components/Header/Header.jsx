@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
@@ -15,7 +16,10 @@ const Header = () => {
                 <i style={{color: "white"}} className="material-symbols-outlined">shopping_bag</i>
                 <p id="header-cart-text">0</p>
             </div>
-            <p id="header-account-text">Log In / Sign Up</p>
+            <div id="header-account-button-container">
+                <Link to="/login" class="header-account-text">Log In</Link>
+                <Link to="/signup" class="header-account-text">Sign Up</Link>
+            </div>
         </header>
     );
 };

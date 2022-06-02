@@ -1,0 +1,95 @@
+#signup-page-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 50em;
+    margin: 50px auto;
+    border-radius: 3px;
+}
+
+#signup-main-title {
+    margin-bottom: 5px;
+}
+
+#signup-sub-title {
+    margin-top: 5px;
+    color: grey;
+}
+
+#signup-form-container {
+    width: 30em;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-bottom: 1em;
+}
+
+#signup-toggle-password-button {
+    border: none;
+    background: none;
+    color: grey;
+    float: right;
+    margin: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 30em;
+    padding: 0;
+}
+
+.signup-input {
+    width: 100%;
+    height: 2em;
+    display: block;
+    font-size: 15px;
+    font-family: 'Roboto Condensed', sans-serif;
+    outline: none;
+    border: 1px solid grey;
+    padding: 3px;
+}
+
+#signup-submit-button {
+    width: 20em;
+    background-color: #000;
+    color: white;
+    padding: 6px;
+    border: 1px solid black
+}
+
+#signup-login-button {
+    color: gray;
+    background-color: transparent;
+    text-decoration: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin-bottom: 3em;
+}
+
+#signup-name-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
+#signup-firstname-input {
+    width: calc(30em - 10px);
+    float: left;
+    display: inline;
+    flex-grow: 2;
+    padding-left: 6px;
+}
+
+#signup-lastname-input {
+    width: calc(30em - 10px);
+    float: right;
+    display: inline;
+    flex-grow: 2;
+}

@@ -6,4 +6,9 @@
 
 main {
     flex-grow: 2;
+    background-color: #EFF0F8;
+}
+
+footer {
+    background-color: #EFF0F8;
 }
