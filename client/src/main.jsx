@@ -11,6 +11,9 @@ import Login from './Pages/Login/Login'
 import SignUp from './Pages/SignUp/SignUp';
 import './index.css'
 
+const baseUrl = "https://lyallstewart-e-commerce-site-wr99466q635xxv-3001.githubpreview.dev";
+export default baseUrl;
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>

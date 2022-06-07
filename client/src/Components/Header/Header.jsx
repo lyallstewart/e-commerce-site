@@ -17,8 +17,8 @@ const Header = () => {
                 <p id="header-cart-text">0</p>
             </div>
             <div id="header-account-button-container">
-                <Link to="/login" class="header-account-text">Log In</Link>
-                <Link to="/signup" class="header-account-text">Sign Up</Link>
+                <Link to="/login" className="header-account-text">Log In</Link>
+                <Link to="/signup" className="header-account-text">Sign Up</Link>
             </div>
         </header>
     );

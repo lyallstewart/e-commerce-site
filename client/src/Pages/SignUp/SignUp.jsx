@@ -2,6 +2,7 @@ import "./SignUp.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import baseUrl from "../../main";
 
 const SignUp = () => {
     const [username, setUsername] = useState("");
@@ -18,7 +19,7 @@ const SignUp = () => {
 
     const handleSignup = (e) => {
         e.preventDefault()
-        axios.post(`https://localhost:8443/auth/signup`, { 
+        axios.post(`${baseUrl}/auth/signup`, { 
             username: username, 
             password: password,
             email: email,
@@ -34,7 +35,7 @@ const SignUp = () => {
     return (
         <main id="signup-page-container">
             <h1 id="signup-main-title">Welcome!</h1>
-            <p class="signup-sub-title">Sign up to continue</p>
+            <p className="signup-sub-title">Sign up to continue</p>
             <div id="signup-form-container">
                 <form id="signup-form">
                     <input onChange={handleEmailChange} className="signup-input" id="signup-email-input" type="email" placeholder="Email" />

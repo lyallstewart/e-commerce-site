@@ -32,6 +32,9 @@
 		"github-cli": "latest"
 	},
 	"portsAttributes": {
+		"3001": {
+			"label": "Express (HTTP only)"
+		},
 		"8443": {
 			"label": "Express Server"
 		}

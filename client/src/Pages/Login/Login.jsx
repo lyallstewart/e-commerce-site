@@ -2,17 +2,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
+import baseUrl from "../../main";
 
 const Login = () => {
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
 
     const handleLogin = (e) => {
-        e.preventDefault()
-        axios.post(`https://localhost:8443/auth/login`, { username: username, password: password })
+        axios.post(`${baseUrl}/auth/login`, { username: username, password: password })
         .then(res => {
-          console.log(res);
-          console.log(res.data);
+            if(!res) return;
+            console.log(res.data);
         })
     };
 

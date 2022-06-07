@@ -5,13 +5,34 @@ const passport = require('../auth/auth');
 
 // Handle POST request to /auth/login
 authRouter.post("/login",
-  passport.authenticate("local", { failureRedirect : "/login"}),
-  (req, res) => {
-    res.redirect('/home')
-    res.status(200).json("Login successful");
-    console.log("Login successful");
-  }
-);
+//   passport.authenticate("local", { failureRedirect : "/login"}),
+  async (req, res) => {
+//     res.redirect('/home')
+//     res.status(200).json("Login successful");
+//     console.log("Login successful");
+//   }
+    const user = await database.User.findOne({username: req.body.username});
+    if (!user) {
+        res.status(404).json({error: 'User does not exist'});
+        console.log("Invalid user")
+    } else {
+        const hash = crypto.pbkdf2Sync(req.body.password, user.password.salt, user.password.iterations, 64, 'sha512').toString('base64');
+        if (hash === user.password.hash) {
+            req.session.authenticated = true;
+            req.session.user = user;
+            if (user.admin)  {
+                req.session.admin = true;
+                res.status(200).json({message: 'Admin logged in successfully'});
+            } else {
+                res.status(200).json({message: 'Login successful'});
+            }
+            console.log("Login successful");
+        } else {
+            res.status(401).json({error: 'Incorrect password'});
+            console.log("Login failed: incorrect password")
+        }
+    }
+});
 
 // Handle POST requests to /auth/signup
 authRouter.post('/signup', async (req, res) => {
