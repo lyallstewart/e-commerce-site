@@ -15,7 +15,6 @@ const setupDatabase = () => {
         password: {
             hash: {type: String, required: true},
             salt: {type: String, required: true},
-            iterations: {type: Number, required: true}
         },
         email: {type: String, required: true},
         firstName: {type: String, required: true},

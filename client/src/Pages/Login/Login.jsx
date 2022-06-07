@@ -9,7 +9,7 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        axios.post(`https://localhost:8443/login`, { username: username, password: password })
+        axios.post(`https://localhost:8443/auth/login`, { username: username, password: password })
         .then(res => {
           console.log(res);
           console.log(res.data);
