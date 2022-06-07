@@ -1,11 +1,11 @@
 const express = require('express');
 const productRouter = express.Router();
-const database = require('../index');
+const database = require('../database/db');
 
 // Handle GET requests to /products/all
 productRouter.get('/all', async (req, res) => {
     try {
-        const users = await database.User.find();
+        const users = await database.Product.find();
         res.status(200).json(users);
     } catch (err) {
         res.status(500).json({ message: err.message });

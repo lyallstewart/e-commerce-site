@@ -1,6 +1,6 @@
 const express = require('express');
 const orderRouter = express.Router();
-const database = require('../index');
+const database = require('../database/db');
 
 // Handle GET requests to /orders/all
 // If user is not an admin, only return orders for the user 

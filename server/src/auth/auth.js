@@ -1,6 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const database = require('../index');
+const database = require('../database/db');
+const path = require('path');
 
 // This gets called whenever passport.authenticate('local') is called.
 passport.use(new LocalStrategy((username, password, done) => {

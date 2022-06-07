@@ -13,7 +13,7 @@ const passport = require('./auth/auth');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
 
 // Local module imports
-const setupDatabase = require('./database/db');
+const database = require('./database/db');
 const orderRouter = require('./routes/orderRoutes');
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
@@ -26,7 +26,7 @@ const {isAdmin, isAuthorised} = require('./auth/middleware');
 
 // Setup express server with middleware
 app = express();
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -41,7 +41,7 @@ const store = new MongoDBStore(
 app.use(
     session({
       secret: process.env.SESSION_SECRET,
-      cookie: { maxAge: 1000 * 60 *60 * 24, secure: true, httpOnly: true },
+      cookie: { maxAge: 1000 * 60 * 60 * 24, secure: true, httpOnly: true },
       resave: false,
       saveUninitialized: false,
       store
@@ -50,9 +50,6 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Connect to the Mongo DB
-const database = setupDatabase();
 
 // Init routers from ./routers
 app.use('/orders', orderRouter);
@@ -82,7 +79,7 @@ app.use((req, res, next) => {
 
 // HTTP server (rather than HTTPS) for development purposes when not on a device with the server certificate
 const httpServer = http.createServer(app);
-httpServer.listen(8443)
+httpServer.listen(3001)
 
 module.exports = {
     app,

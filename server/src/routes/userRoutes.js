@@ -1,6 +1,6 @@
 const express = require('express');
 const userRouter = express.Router();
-const database = require('../index');
+const database = require('../database/db');
 
 // Handle GET requests to /users (will need to be secured)
 userRouter.get('/all', async (req, res) => {

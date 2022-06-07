@@ -1,6 +1,6 @@
 const express = require('express');
 const authRouter = express.Router();
-const database = require('../index');
+const database = require('../database/db');
 const passport = require('../auth/auth');
 
 // Handle POST request to /auth/login
