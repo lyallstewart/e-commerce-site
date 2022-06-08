@@ -2,6 +2,8 @@ const express = require('express');
 const orderRouter = express.Router();
 const database = require('../database/db');
 
+// Routes requiring sessions are currently broken until Passport is fixed
+
 // Handle GET requests to /orders/all
 // If user is not an admin, only return orders for the user 
 orderRouter.get('/all', async (req, res) => {

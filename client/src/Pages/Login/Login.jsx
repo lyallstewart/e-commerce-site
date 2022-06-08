@@ -9,7 +9,8 @@ const Login = () => {
     const [username, setUsername] = useState("");
 
     const handleLogin = (e) => {
-        axios.post(`${baseUrl}/auth/login`, { username: username, password: password })
+        e.preventDefault();
+        axios.post(`${baseUrl}/auth/login/`, { username: username, password: password })
         .then(res => {
             if(!res) return;
             console.log(res.data);

@@ -19,7 +19,7 @@ const SignUp = () => {
 
     const handleSignup = (e) => {
         e.preventDefault()
-        axios.post(`${baseUrl}/auth/signup`, { 
+        axios.post(`${baseUrl}/auth/signup/`, { 
             username: username, 
             password: password,
             email: email,

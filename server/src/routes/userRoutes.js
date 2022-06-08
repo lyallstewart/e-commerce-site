@@ -2,6 +2,8 @@ const express = require('express');
 const userRouter = express.Router();
 const database = require('../database/db');
 
+// Routes requiring sessions are currently broken until Passport is fixed
+
 // Handle GET requests to /users (will need to be secured)
 userRouter.get('/all', async (req, res) => {
     try {

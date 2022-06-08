@@ -2,6 +2,8 @@ const express = require('express');
 const productRouter = express.Router();
 const database = require('../database/db');
 
+// Routes requiring sessions are currently broken until Passport is fixed
+
 // Handle GET requests to /products/all
 productRouter.get('/all', async (req, res) => {
     try {

@@ -51,16 +51,22 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Testing route and logging
+app.use('/', (req, res, next) => {
+  console.log(`LOGGING: ${req.method} request to ${req.originalUrl}`);
+  next();
+});
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
 // Init routers from ./routers
 app.use('/orders', orderRouter);
 app.use('/users', userRouter);
 app.use('/products', productRouter);
 app.use('/auth', authRouter);
 
-// Testing route
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
 
 // Runs if all other handling fails
 app.use((req, res, next) => {
