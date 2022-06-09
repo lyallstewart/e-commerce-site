@@ -20,9 +20,9 @@ const productRouter = require('./routes/productRoutes');
 const authRouter = require('./routes/authRoutes');
 const {isAdmin, isAuthorised} = require('./auth/middleware');
 
-// const privateKey = fs.readFileSync(path.resolve(__dirname, './auth/ssl/key.pem'), 'utf8');
-// const certificate = fs.readFileSync(path.resolve(__dirname, './auth/ssl/cert.pem'), 'utf8');
-// const sslCredentials = {key: privateKey, cert: certificate};
+const privateKey = fs.readFileSync(path.resolve(__dirname, './auth/ssl/key.pem'), 'utf8');
+const certificate = fs.readFileSync(path.resolve(__dirname, './auth/ssl/cert.pem'), 'utf8');
+const sslCredentials = {key: privateKey, cert: certificate};
 
 // Setup express server with middleware
 app = express();
@@ -30,13 +30,14 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Setup session storage
+// Setup session storage in database
 const store = new MongoDBStore(
     {
       uri: process.env.MONGODB_URI,
       databaseName: 'ecommerce',
       collection: 'sessions'
-    });
+    }
+);
 
 app.use(
     session({
@@ -51,12 +52,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Testing route and logging
+// Logging middleware (runs on all requests, even invalid ones)
 app.use('/', (req, res, next) => {
   console.log(`LOGGING: ${req.method} request to ${req.originalUrl}`);
   next();
 });
 
+// Testing route
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
@@ -67,27 +69,18 @@ app.use('/users', userRouter);
 app.use('/products', productRouter);
 app.use('/auth', authRouter);
 
-
 // Runs if all other handling fails
 app.use((req, res, next) => {
     res.status(404).send("Oh no, that URL is not valid!")
 })
 
-// Start express server
-// const httpsServer = https.createServer(sslCredentials, app);
-// try {
-//     httpsServer.listen(8443);
-//     console.log("Server started on port 8443");
-// } catch (err) {
-//     console.log(`An error occurred, could not start the server:\n${err.message}`);
-// }
-
-
-// HTTP server (rather than HTTPS) for development purposes when not on a device with the server certificate
-const httpServer = http.createServer(app);
-httpServer.listen(3001)
-
-module.exports = {
-    app,
-    database
+// Start HTTPS server running express app
+const httpsServer = https.createServer(sslCredentials, app);
+try {
+    httpsServer.listen(8443);
+    console.log("Server started on port 8443");
+} catch (err) {
+    console.log(`An error occurred, could not start the server:\n${err.message}`);
 }
+
+module.exports = app;
