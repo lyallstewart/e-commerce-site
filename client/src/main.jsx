@@ -7,16 +7,19 @@ import {
 } from 'react-router-dom';
 import { store } from './store/store';
 import { Provider } from 'react-redux';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
 import App from './app/App';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import './index.css';
+import { apiSlice } from './api/apiSlice';
 
+
+// Really don't like how heavily nested this is: TODO
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ApiProvider api={apiSlice}>
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
@@ -28,6 +31,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </Routes>
         </BrowserRouter>
       </Provider>
-    </ChakraProvider>
+    </ApiProvider>
   </React.StrictMode>
 )

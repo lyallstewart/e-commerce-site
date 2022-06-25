@@ -30,6 +30,7 @@ app = express();
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.set('trust proxy', 1)
 
 // Setup session storage in database
 const store = new MongoDBStore(
@@ -43,7 +44,7 @@ const store = new MongoDBStore(
 app.use(
     session({
       secret: process.env.SESSION_SECRET,
-      cookie: { maxAge: 1000 * 60 * 60 * 24, secure: true, httpOnly: true },
+      cookie: { maxAge: 1000 * 60 * 60 * 24, httpOnly: true },
       resave: false,
       saveUninitialized: false,
       store

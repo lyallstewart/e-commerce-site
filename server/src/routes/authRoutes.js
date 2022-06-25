@@ -5,7 +5,7 @@ const passport = require('../auth/auth');
 const crypto = require('crypto')
 
 // Handle POST request to /auth/login
-authRouter.post("/login", passport.authenticate("local", { failureRedirect : "/auth/loginFail", failureMessage: true}),  async (req, res) => {
+authRouter.post("/login", passport.authenticate("local", { failureRedirect : "/auth/loginFail", successRedirect: "/auth/loginSuccess"}),  async (req, res) => {
     res.status(200).json({
         message: "Login successful",
         success: true,
@@ -48,6 +48,13 @@ authRouter.get('/loginFail', (req, res, next) => {
     res.status(401).json({
         message: "Authentication failed",
         success: false
+    })
+})
+
+authRouter.get('/loginSuccess', (req, res, next) => {
+    res.status(200).json({
+        message: "Authentication success",
+        success: true
     })
 })
 

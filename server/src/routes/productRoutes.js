@@ -6,6 +6,7 @@ const database = require('../database/db');
 
 // Handle GET requests to /products/all
 productRouter.get('/all', async (req, res) => {
+    console.log(req.isAuthenticated())
     try {
         const users = await database.Product.find();
         res.status(200).json(users);

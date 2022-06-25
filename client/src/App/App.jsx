@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import WebFont from 'webfontloader';
 import { Outlet} from "react-router-dom";
 import "./App.css";
-import Header from "../Components/Header/Header.jsx";
+import Header from "../components/Header/Header.jsx";
 
 const App = () => {
     useEffect(() => {
         WebFont.load({
           google: {
-            families: ['Roboto', 'Inter', 'Roboto Condensed', "Material Symbols Outlined"]
+            families: ['Roboto', 'Inter', 'Roboto Condensed', "Material Symbols Outlined", "Material Icons"]
           }
         });
        }, []);
