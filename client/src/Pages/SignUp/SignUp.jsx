@@ -2,7 +2,6 @@ import "./SignUp.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import baseUrl from "../../main";
 
 const SignUp = () => {
     const [username, setUsername] = useState("");
@@ -19,7 +18,7 @@ const SignUp = () => {
 
     const handleSignup = (e) => {
         e.preventDefault()
-        axios.post(`${baseUrl}/auth/signup/`, { 
+        axios.post(`https://localhost:8443/auth/signup`, { 
             username: username, 
             password: password,
             email: email,

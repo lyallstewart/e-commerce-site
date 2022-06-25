@@ -23,6 +23,7 @@ const setupDatabase = () => {
         email: {type: String, required: true},
         firstName: {type: String, required: true},
         lastName: {type: String, required: true},
+        cart: {type: Object, required: false},
         admin: {type: Boolean, required: true},
         createdAt: {
             type: Date,

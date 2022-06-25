@@ -18,6 +18,7 @@ const orderRouter = require('./routes/orderRoutes');
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
 const authRouter = require('./routes/authRoutes');
+const cartRouter = require('./routes/cartRoutes');
 const {isAdmin, isAuthorised} = require('./auth/middleware');
 
 const privateKey = fs.readFileSync(path.resolve(__dirname, './auth/ssl/key.pem'), 'utf8');
@@ -71,7 +72,7 @@ app.use('/auth', authRouter);
 
 // Runs if all other handling fails
 app.use((req, res, next) => {
-    res.status(404).send("Oh no, that URL is not valid!")
+    res.status(404).send("Oh no, that URL does not exist!")
 })
 
 // Start HTTPS server running express app
