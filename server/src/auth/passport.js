@@ -3,16 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const database = require('../database/db');
 const path = require('path');
 const crypto = require('crypto');
-
-const hashPassword = async (password, salt) => {
-    if(!salt) {
-        salt = crypto.randomBytes(128).toString('base64');
-    } 
-    const iterations = 10000;
-    // Using bcrypt to hash the password would be more secure, but this is fine for now and is simpler
-    const hash = await crypto.pbkdf2Sync(password, salt, iterations, 64, 'sha512').toString('base64');
-    return { hash, salt};
-}
+const { hashPassword } = require('./helpers');
 
 // This gets called whenever passport.authenticate('local') is called.
 passport.use(new LocalStrategy((username, password, done) => {

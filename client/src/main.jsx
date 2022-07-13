@@ -9,7 +9,7 @@ import { store } from './store/store';
 import { Provider } from 'react-redux';
 import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
 import App from './app/App';
-import Home from './pages/Home/Home';
+import Home from './pages/Home/Home.jsx';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import './index.css';

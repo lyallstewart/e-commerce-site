@@ -18,7 +18,7 @@ const SignUp = () => {
 
     const handleSignup = (e) => {
         e.preventDefault()
-        axios.post(`https://localhost:8443/auth/signup`, { 
+        axios.post(`https://localhost:3001/auth/signup`, { 
             username: username, 
             password: password,
             email: email,

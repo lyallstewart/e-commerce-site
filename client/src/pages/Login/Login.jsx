@@ -11,7 +11,7 @@ const Login = (props) => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        axios.post(`https://localhost:8443/auth/login`, { username: username, password: password })
+        axios.post(`https://lyallstewart-e-commerce-site-wr99466q635xxv-3001.githubpreview.dev/auth/login/`, { username: username, password: password })
         .then(res => {
             if(!res) return;
 
